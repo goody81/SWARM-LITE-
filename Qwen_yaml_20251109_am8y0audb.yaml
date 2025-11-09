@@ -1,6 +1,0 @@
-# docker-compose.scale.yml
-version: '3.8'
-services:
-  sworms-lite:
-    deploy:
-      replicas: 3
