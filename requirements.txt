@@ -1,3 +1,3 @@
-asyncio>=3.4.3
-typing-extensions>=4.0.0
-python-dateutil>=2.8.2
+# All dependencies are part of Python standard library
+# typing-extensions and python-dateutil may be installed if needed
+
