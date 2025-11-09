@@ -1,0 +1,1 @@
+mkdir -p sworms-lite/{src,tests,docs,config,scripts}

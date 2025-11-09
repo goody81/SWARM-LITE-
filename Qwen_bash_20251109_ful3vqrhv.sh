@@ -1,0 +1,9 @@
+# High-performance mode
+DEFAULT_LATENCY=0.01  # 10ms latency
+MAX_MESSAGE_QUEUE_SIZE=5000
+MAX_AGENTS=200
+
+# Low-resource mode  
+DEFAULT_LATENCY=0.1   # 100ms latency
+MAX_MESSAGE_QUEUE_SIZE=100
+MAX_AGENTS=10
