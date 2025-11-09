@@ -16,9 +16,10 @@ class TaskScheduler:
     async def add_task(self, task: Task) -> None:
         """Add a task to the scheduler"""
         async with self._lock:
+            # Negate priority for min-heap (higher priority = lower number)
             heapq.heappush(
                 self.task_queue,
-                (task.priority.value, task.created_at, task)
+                (-task.priority.value, task.created_at, task)
             )
             logger.info(
                 f"Task {task.id} added to queue with priority {task.priority}"
@@ -29,17 +30,26 @@ class TaskScheduler:
     ) -> Optional[Task]:
         """Get the next suitable task for an agent"""
         async with self._lock:
+            checked_tasks = []
+            result_task = None
+
             while self.task_queue:
                 _, _, task = heapq.heappop(self.task_queue)
                 if self._can_handle_task(task, agent_capabilities):
                     task.status = TaskStatus.ASSIGNED
                     self.running_tasks[task.id] = task
-                    return task
-                heapq.heappush(
-                    self.task_queue,
-                    (task.priority.value, task.created_at, task)
-                )
-        return None
+                    result_task = task
+                    break
+                else:
+                    checked_tasks.append(
+                        (-task.priority.value, task.created_at, task)
+                    )
+
+            # Re-add tasks that couldn't be handled
+            for task_tuple in checked_tasks:
+                heapq.heappush(self.task_queue, task_tuple)
+
+            return result_task
 
     def _can_handle_task(
         self, task: Task, capabilities: Dict[str, Any]
