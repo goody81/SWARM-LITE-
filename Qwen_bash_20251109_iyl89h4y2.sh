@@ -1,1 +1,0 @@
-python -c "import asyncio; from src.sworms_lite import main; asyncio.run(main())"

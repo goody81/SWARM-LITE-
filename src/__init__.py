@@ -1,0 +1,102 @@
+"""SWARM-LITE- - Lightweight Multi-Agent System.
+
+A lightweight implementation of the SWORMS collective intelligence system,
+providing simplified multi-agent communication and coordination framework.
+"""
+
+__version__ = "0.1.0"
+
+from .core import (
+    AgentCapabilities,
+    AgentInfo,
+    AgentState,
+    AgentStatus,
+    AsyncAgent,
+    CommunicationHub,
+    MessageType,
+    ResourceMetrics,
+    SystemEvent,
+    TaskCoordinator,
+    TaskInfo,
+    TaskPriority,
+    TaskRequirements,
+    TaskState,
+)
+from .protocols import (
+    BroadcastMessage,
+    ErrorMessage,
+    HeartbeatMessage,
+    Message,
+    RegisterMessage,
+    StateUpdateMessage,
+    SystemEventMessage,
+    Task,
+    TaskBatch,
+    TaskDependency,
+    TaskRequestMessage,
+    TaskResponseMessage,
+    TaskUpdateMessage,
+    UnregisterMessage,
+)
+from .utils import (
+    ContextAdapter,
+    MetricsCollector,
+    SwarmConfig,
+    add_context,
+    get_config,
+    get_logger,
+    get_metrics_collector,
+    get_module_logger,
+    log_with_context,
+    reset_config,
+    reset_metrics_collector,
+    set_config,
+    setup_logging,
+)
+
+__all__ = [
+    # Core
+    "AsyncAgent",
+    "CommunicationHub",
+    "TaskCoordinator",
+    "AgentCapabilities",
+    "AgentInfo",
+    "AgentState",
+    "AgentStatus",
+    "MessageType",
+    "ResourceMetrics",
+    "SystemEvent",
+    "TaskInfo",
+    "TaskPriority",
+    "TaskRequirements",
+    "TaskState",
+    # Protocols
+    "Message",
+    "TaskRequestMessage",
+    "TaskResponseMessage",
+    "TaskUpdateMessage",
+    "HeartbeatMessage",
+    "RegisterMessage",
+    "UnregisterMessage",
+    "StateUpdateMessage",
+    "ErrorMessage",
+    "BroadcastMessage",
+    "SystemEventMessage",
+    "Task",
+    "TaskBatch",
+    "TaskDependency",
+    # Utils
+    "SwarmConfig",
+    "get_config",
+    "set_config",
+    "reset_config",
+    "ContextAdapter",
+    "setup_logging",
+    "get_logger",
+    "get_module_logger",
+    "add_context",
+    "log_with_context",
+    "MetricsCollector",
+    "get_metrics_collector",
+    "reset_metrics_collector",
+]
